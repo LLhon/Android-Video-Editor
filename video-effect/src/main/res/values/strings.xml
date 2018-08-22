@@ -1,0 +1,27 @@
+<resources>
+  <string name="app_name">video-effect</string>
+
+  <string name="filter_none">原图</string>
+  <string name="filter_invert">胶片</string>
+  <string name="filter_monochrome">单色</string>
+  <string name="filter_sepia">怀旧</string>
+  <string name="filter_grayscale">灰度</string>
+  <string name="filter_sharpen">锐化</string>
+  <string name="filter_sphererefraction">球形</string>
+  <string name="filter_bulgedistortion">变形</string>
+  <string name="filter_cgacolorspace">染料</string>
+  <string name="filter_haze">迷雾</string>
+  <string name="filter_bilateral">双边</string>
+  <string name="filter_tonecurve">曲线</string>
+  <string name="filter_vignette">晕影</string>
+  <string name="filter_blackandwhite">黑白</string>
+  <string name="filter_overlay">重叠</string>
+  <string name="filter_barrelblur">模糊</string>
+  <string name="filter_posterize">噪点</string>
+  <string name="filter_contrast">对比度</string>
+  <string name="filter_gamma">伽马线</string>
+  <string name="filter_crossprocess">交叉</string>
+  <string name="filter_hue">色度</string>
+  <string name="filter_temperature">色温</string>
+  <string name="filter_sketch">素描</string>
+</resources>

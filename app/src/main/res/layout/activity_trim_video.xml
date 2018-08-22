@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:background="@android:color/black"
+  android:orientation="vertical">
+
+  <RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_above="@+id/layout"
+    android:orientation="vertical">
+
+    <RelativeLayout
+      android:id="@+id/layout_surface_view"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_above="@+id/layout"
+      android:gravity="center"
+      android:orientation="vertical">
+
+      <com.marvhong.videoeffect.GPUVideoView
+        android:id="@+id/glsurfaceview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+      android:id="@+id/layout"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_alignParentBottom="true"
+      android:orientation="vertical">
+
+      <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <LinearLayout
+          android:id="@+id/ll_trim_container"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="vertical">
+
+          <TextView
+            android:id="@+id/video_shoot_tip"
+            android:layout_width="40dp"
+            android:layout_height="22dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="9dp"
+            android:layout_marginLeft="56dp"
+            android:gravity="center"
+            android:background="@color/f4d4d4d"
+            android:text="10"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"/>
+
+          <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="62dp">
+
+            <android.support.v7.widget.RecyclerView
+              android:id="@+id/video_thumb_listview"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"/>
+
+            <ImageView
+              android:id="@+id/positionIcon"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent"
+              android:layout_centerVertical="true"
+              android:layout_marginLeft="56dp"
+              android:src="@drawable/shape_seek_bar"
+              />
+
+            <LinearLayout
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="horizontal">
+
+              <View
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:background="#66000000"/>
+
+              <LinearLayout
+                android:id="@+id/id_seekBarLayout"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_centerVertical="true"
+                android:orientation="vertical"/>
+
+              <View
+                android:layout_width="56dp"
+                android:layout_height="match_parent"
+                android:background="#66000000"/>
+
+            </LinearLayout>
+
+          </FrameLayout>
+
+        </LinearLayout>
+
+        <!--滤镜-->
+        <HorizontalScrollView
+          android:id="@+id/hsv_effect"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="10dp"
+          android:scrollbars="none"
+          android:visibility="gone">
+
+          <LinearLayout
+            android:id="@+id/ll_effect_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:orientation="horizontal"/>
+
+        </HorizontalScrollView>
+
+      </FrameLayout>
+
+      <LinearLayout
+        android:id="@+id/ll_tab"
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+          android:id="@+id/ll_trim_tab"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:orientation="vertical"
+          android:layout_height="match_parent">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="裁切"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/>
+
+          <View
+            android:id="@+id/view_trim_indicator"
+            android:layout_width="70dp"
+            android:layout_height="5dp"
+            android:background="@android:color/white"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+          android:id="@+id/ll_effect_tab"
+          android:layout_width="0dp"
+          android:layout_weight="1"
+          android:gravity="center"
+          android:orientation="vertical"
+          android:layout_height="match_parent">
+
+          <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center_vertical"
+            android:text="滤镜"
+            android:textSize="16sp"
+            android:textColor="@android:color/white"/>
+
+          <View
+            android:id="@+id/view_effect_indicator"
+            android:layout_width="70dp"
+            android:layout_height="5dp"
+            android:visibility="gone"
+            android:background="@android:color/white"/>
+
+        </LinearLayout>
+
+      </LinearLayout>
+
+    </LinearLayout>
+
+  </RelativeLayout>
+
+</LinearLayout>

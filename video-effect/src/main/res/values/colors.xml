@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <color name="filter_category_greenish_dummy">#ffb1c0c2</color>
+  <color name="filter_category_greenish_normal">#ff7bc4c5</color>
+
+</resources>
