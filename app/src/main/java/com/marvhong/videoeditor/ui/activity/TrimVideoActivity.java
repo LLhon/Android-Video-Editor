@@ -1,4 +1,4 @@
-package com.marvhong.videoeditor;
+package com.marvhong.videoeditor.ui.activity;
 
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
@@ -8,17 +8,17 @@ import android.graphics.Bitmap;
 import android.graphics.SurfaceTexture;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.support.v7.widget.Toolbar.OnMenuItemClickListener;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
@@ -39,7 +39,10 @@ import butterknife.OnClick;
 import com.bumptech.glide.Glide;
 import com.cjt2325.cameralibrary.util.FileUtil;
 import com.iceteck.silicompressorr.SiliCompressor;
+import com.marvhong.videoeditor.App;
+import com.marvhong.videoeditor.R;
 import com.marvhong.videoeditor.adapter.TrimVideoAdapter;
+import com.marvhong.videoeditor.base.BaseActivity;
 import com.marvhong.videoeditor.model.FilterModel;
 import com.marvhong.videoeditor.model.VideoEditInfo;
 import com.marvhong.videoeditor.utils.ExtractFrameWorkThread;
@@ -62,7 +65,6 @@ import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import java.io.File;
@@ -77,8 +79,10 @@ import java.util.List;
  * @Date 2018/8/21 17:51
  * @description 裁剪视频界面
  */
-public class TrimVideoActivity extends AppCompatActivity {
+public class TrimVideoActivity extends BaseActivity {
 
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
     @BindView(R.id.glsurfaceview)
     GPUVideoView mSurfaceView;
     @BindView(R.id.video_shoot_tip)
@@ -104,7 +108,6 @@ public class TrimVideoActivity extends AppCompatActivity {
     private RangeSeekBar seekBar;
 
     private static final String TAG = TrimVideoActivity.class.getSimpleName();
-    private CompositeDisposable mDisposables = new CompositeDisposable();
     private static final long MIN_CUT_DURATION = 3 * 1000L;// 最小剪辑时间3s
     private static final long MAX_CUT_DURATION = 10 * 1000L;//视频最多剪切多长时间
     private static final int MAX_COUNT_RANGE = 10;//seekBar的区域内一共有多少张图片
@@ -140,14 +143,12 @@ public class TrimVideoActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_trim_video);
-        initData();
-        initView();
+    protected int getLayoutId() {
+        return R.layout.activity_trim_video;
     }
 
-    private void initData() {
+    @Override
+    protected void init() {
         mVideoPath = getIntent().getStringExtra("videoPath");
 
         mExtractVideoInfoUtil = new ExtractVideoInfoUtil(mVideoPath);
@@ -166,7 +167,7 @@ public class TrimVideoActivity extends AppCompatActivity {
             .subscribe(new Observer<String>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    mDisposables.add(d);
+                   subscribe(d);
                 }
 
                 @Override
@@ -187,8 +188,26 @@ public class TrimVideoActivity extends AppCompatActivity {
             });
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ButterKnife.bind(this);
+        mToolbar.setTitle("裁剪");
+        mToolbar.setNavigationOnClickListener(v -> {
+            finish();
+        });
+        mToolbar.inflateMenu(R.menu.tool_bar);
+        mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.publish: //发布
+                        trimmerVideo();
+                        break;
+                }
+                return false;
+            }
+        });
+
         mRecyclerView
             .setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         videoEditAdapter = new TrimVideoAdapter(this, mMaxWidth / 10);
@@ -227,12 +246,6 @@ public class TrimVideoActivity extends AppCompatActivity {
     @OnClick({R.id.ll_trim_tab, R.id.ll_effect_tab})
     public void onClick(View v) {
         switch (v.getId()) {
-//            case R.id.iv_back: //返回
-//                finish();
-//                break;
-//            case R.id.tv_step_next: //裁剪视频->滤镜视频->压缩视频
-//                trimmerVideo();
-//                break;
             case R.id.ll_trim_tab: //裁切tab
                 mViewTrimIndicator.setVisibility(View.VISIBLE);
                 mViewEffectIndicator.setVisibility(View.GONE);
@@ -450,7 +463,7 @@ public class TrimVideoActivity extends AppCompatActivity {
             .subscribe(new Observer<String>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    mDisposables.add(d);
+                    subscribe(d);
                 }
 
                 @Override
@@ -559,7 +572,7 @@ public class TrimVideoActivity extends AppCompatActivity {
             .subscribe(new Observer<String>() {
                 @Override
                 public void onSubscribe(Disposable d) {
-                    mDisposables.add(d);
+                    subscribe(d);
                 }
 
                 @Override
@@ -576,6 +589,9 @@ public class TrimVideoActivity extends AppCompatActivity {
                         bitmap = null;
                     }
                     NormalProgressDialog.stopLoading();
+
+                    VideoPreviewActivity.startActivity(TrimVideoActivity.this, outputPath, firstFrame);
+                    finish();
                 }
 
                 @Override

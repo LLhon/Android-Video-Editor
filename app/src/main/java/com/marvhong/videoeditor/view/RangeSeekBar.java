@@ -110,7 +110,7 @@ public class RangeSeekBar extends View {
         //绘制白色边框
         rectPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         rectPaint.setStyle(Paint.Style.FILL);
-        rectPaint.setColor(Color.parseColor("#43bd1f"));
+        rectPaint.setColor(Color.parseColor("#ffffff"));
         //绘制左右两边灰色线条
         mGrayPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mGrayPaint.setColor(getContext().getResources().getColor(R.color.cccccc));
@@ -182,14 +182,14 @@ public class RangeSeekBar extends View {
                     thumbPaddingTop,
                     normalizedToScreen(normalizedMaxValue),
                     thumbPaddingTop + thumbHeight, rectPaint);
-//                canvas.drawRect(normalizedToScreen(normalizedMinValue) + top_bottom_border_height,
-//                    thumbPaddingTop + left_right_gray_margin,
-//                    normalizedToScreen(normalizedMinValue) + top_bottom_border_height + left_right_gray_width,
-//                    thumbPaddingTop + left_right_gray_margin + left_right_gray_height, mGrayPaint);
-//                canvas.drawRect(normalizedToScreen(normalizedMaxValue) - thumbWidth + top_bottom_border_height,
-//                    thumbPaddingTop + left_right_gray_margin,
-//                    normalizedToScreen(normalizedMaxValue) - thumbWidth + top_bottom_border_height + left_right_gray_width,
-//                    thumbPaddingTop + left_right_gray_margin + left_right_gray_height, mGrayPaint);
+                canvas.drawRect(normalizedToScreen(normalizedMinValue) + top_bottom_border_height,
+                    thumbPaddingTop + left_right_gray_margin,
+                    normalizedToScreen(normalizedMinValue) + top_bottom_border_height + left_right_gray_width,
+                    thumbPaddingTop + left_right_gray_margin + left_right_gray_height, mGrayPaint);
+                canvas.drawRect(normalizedToScreen(normalizedMaxValue) - thumbWidth + top_bottom_border_height,
+                    thumbPaddingTop + left_right_gray_margin,
+                    normalizedToScreen(normalizedMaxValue) - thumbWidth + top_bottom_border_height + left_right_gray_width,
+                    thumbPaddingTop + left_right_gray_margin + left_right_gray_height, mGrayPaint);
             } catch (Exception e) {
                 // 当pro_scale非常小，例如width=12，Height=48，pro_scale=0.01979065时，
                 // 宽高按比例计算后值为0.237、0.949，系统强转为int型后宽就变成0了。就出现非法参数异常

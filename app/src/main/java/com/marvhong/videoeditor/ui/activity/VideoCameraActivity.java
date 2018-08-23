@@ -1,13 +1,10 @@
-package com.marvhong.videoeditor;
+package com.marvhong.videoeditor.ui.activity;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.os.Bundle;
 import android.os.Environment;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
@@ -20,6 +17,8 @@ import com.cjt2325.cameralibrary.listener.ErrorListener;
 import com.cjt2325.cameralibrary.listener.JCameraListener;
 import com.cjt2325.cameralibrary.listener.RecordStateListener;
 import com.cjt2325.cameralibrary.util.FileUtil;
+import com.marvhong.videoeditor.R;
+import com.marvhong.videoeditor.base.BaseActivity;
 import java.io.File;
 
 /**
@@ -29,24 +28,25 @@ import java.io.File;
  * @Date 2018/8/22 10:54
  * @description 视频拍摄界面
  */
-public class VideoCameraActivity extends AppCompatActivity {
+public class VideoCameraActivity extends BaseActivity {
 
     @BindView(R.id.jcameraview)
     JCameraView mJCameraView;
 
-    public static final String TAG = VideoCameraActivity.class.getSimpleName();
+    @Override
+    protected int getLayoutId() {
+        return R.layout.activity_video_camera;
+    }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    protected void init() {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-        setContentView(R.layout.activity_video_camera);
-        initView();
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
         ButterKnife.bind(this);
         //设置视频保存路径
         mJCameraView.setSaveVideoPath(

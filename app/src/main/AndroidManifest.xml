@@ -16,7 +16,7 @@
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
     android:theme="@style/AppTheme">
-    <activity android:name=".MainActivity">
+    <activity android:name=".ui.activity.MainActivity">
       <intent-filter>
         <action android:name="android.intent.action.MAIN"/>
 
@@ -26,15 +26,21 @@
 
     <activity
       android:configChanges="keyboard|orientation|screenSize"
-      android:name=".VideoAlbumActivity"
+      android:name=".ui.activity.VideoAlbumActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:configChanges="keyboard|orientation|screenSize"
-      android:name=".VideoCameraActivity"
+      android:name=".ui.activity.VideoCameraActivity"
       android:screenOrientation="portrait"/>
     <activity
       android:configChanges="keyboard|orientation|screenSize"
-      android:name=".TrimVideoActivity"
+      android:name=".ui.activity.TrimVideoActivity"
+      android:hardwareAccelerated="true"
+      android:screenOrientation="portrait"/>
+    <activity
+      android:configChanges="keyboard|orientation|screenSize"
+      android:name=".ui.activity.VideoPreviewActivity"
+      android:hardwareAccelerated="true"
       android:screenOrientation="portrait"/>
 
   </application>

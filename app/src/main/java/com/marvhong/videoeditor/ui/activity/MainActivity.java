@@ -1,22 +1,34 @@
-package com.marvhong.videoeditor;
+package com.marvhong.videoeditor.ui.activity;
 
 import android.Manifest.permission;
 import android.content.Intent;
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import com.marvhong.videoeditor.R;
+import com.marvhong.videoeditor.base.BaseActivity;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivity {
+
+    @BindView(R.id.toolbar)
+    Toolbar mToolbar;
 
     private RxPermissions mRxPermissions;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    protected int getLayoutId() {
+        return R.layout.activity_main;
+    }
+
+    @Override
+    protected void initView() {
         mRxPermissions = new RxPermissions(this);
+        ButterKnife.bind(this);
+        setupToolbar(mToolbar, "视频编辑");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     /**

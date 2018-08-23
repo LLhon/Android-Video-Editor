@@ -1,40 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
   xmlns:android="http://schemas.android.com/apk/res/android"
   xmlns:app="http://schemas.android.com/apk/res-auto"
   xmlns:tools="http://schemas.android.com/tools"
   android:layout_width="match_parent"
   android:layout_height="match_parent"
-  tools:context=".MainActivity">
+  android:orientation="vertical"
+  tools:context=".ui.activity.MainActivity">
 
+  <android.support.v7.widget.Toolbar
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    app:popupTheme="@style/AppTheme.AppBarOverlay"
+    app:contentInsetStartWithNavigation="0dp"
+    app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+    app:titleTextColor="@android:color/black"/>
 
   <Button
     android:id="@+id/btn_camera"
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="16dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_margin="8dp"
     android:onClick="takeCamera"
-    android:text="拍照"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+    android:text="拍摄"/>
 
   <Button
     android:id="@+id/btn_album"
-    android:layout_width="0dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginLeft="8dp"
-    android:layout_marginRight="8dp"
+    android:layout_margin="8dp"
     android:onClick="takeAlbum"
-    android:text="相册"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/btn_camera"/>
-</android.support.constraint.ConstraintLayout>
+    android:text="相册"/>
+
+</LinearLayout>

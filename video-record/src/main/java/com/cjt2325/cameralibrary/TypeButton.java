@@ -48,8 +48,7 @@ public class TypeButton extends View{
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         path = new Path();
-//        strokeWidth = size / 50f;
-        strokeWidth = size / 15f;
+        strokeWidth = size / 50f;
         index = button_size / 12f;
         rectF = new RectF(center_X, center_Y - index, center_X + index * 2, center_Y + index);
     }

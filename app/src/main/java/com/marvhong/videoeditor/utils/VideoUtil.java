@@ -945,7 +945,7 @@ public class VideoUtil {
         File folderDir = new File(rootDir.getAbsolutePath() + File.separator + TRIM_PATH + File.separator + THUMB_PATH);
         if (folderDir == null) {
             folderDir = new File(Environment.getExternalStorageDirectory().getAbsolutePath()
-                + File.separator + "haodiaoyu" + File.separator + "picture");
+                + File.separator + "videoeditor" + File.separator + "picture");
         }
         if (!folderDir.exists() && folderDir.mkdirs()) {
 
