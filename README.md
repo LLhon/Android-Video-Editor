@@ -3,9 +3,9 @@
 - 本人只是将以下几大优秀开源框架集成到一起，以实现一个较完整的视频编辑器。
 
 ## 效果图
-![video-editor](image/01.png) ![video-editor](image/02.png)
+![video-editor](image/01.jpg) ![video-editor](image/02.jpg)
 <br>
-![video-editor](image/03.png) ![video-editor](image/04.png)    
+![video-editor](image/03.jpg) ![video-editor](image/04.jpg)    
 <br>
 
 ## Thanks
