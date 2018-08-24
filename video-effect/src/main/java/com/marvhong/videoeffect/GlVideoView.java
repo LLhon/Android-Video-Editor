@@ -26,19 +26,18 @@ import com.marvhong.videoeffect.filter.base.GlFilter;
 import com.marvhong.videoeffect.render.VideoGlRender;
 
 
-public class GPUVideoView extends GLSurfaceView {
+public class GlVideoView extends GLSurfaceView {
 
-//    private GPUVideoRenderer mRenderer;
     private VideoGlRender mRenderer;
 
     private Context mContext;
 
-    public GPUVideoView(Context context) {
+    public GlVideoView(Context context) {
         super(context);
         init(context,null);
     }
 
-    public GPUVideoView(Context context, AttributeSet attrs) {
+    public GlVideoView(Context context, AttributeSet attrs) {
         super(context, attrs);
         init(context,attrs);
     }
@@ -53,8 +52,6 @@ public class GPUVideoView extends GLSurfaceView {
     }
 
     public void init(IVideoSurface videoSurface){
-//        GPUVideoFilter filter = new GPUVideoFilter();
-//        mRenderer = new GPUVideoRenderer(filter, videoSurface);
         GlFilter filter = new GlFilter();
         mRenderer = new VideoGlRender(filter, videoSurface);
 

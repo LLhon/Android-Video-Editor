@@ -53,7 +53,7 @@ import com.marvhong.videoeditor.view.NormalProgressDialog;
 import com.marvhong.videoeditor.view.RangeSeekBar;
 import com.marvhong.videoeditor.view.VideoThumbSpacingItemDecoration;
 import com.marvhong.videoeffect.FillMode;
-import com.marvhong.videoeffect.GPUVideoView;
+import com.marvhong.videoeffect.GlVideoView;
 import com.marvhong.videoeffect.IVideoSurface;
 import com.marvhong.videoeffect.composer.Mp4Composer;
 import com.marvhong.videoeffect.composer.Mp4Composer.Listener;
@@ -84,7 +84,7 @@ public class TrimVideoActivity extends BaseActivity {
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
     @BindView(R.id.glsurfaceview)
-    GPUVideoView mSurfaceView;
+    GlVideoView mSurfaceView;
     @BindView(R.id.video_shoot_tip)
     TextView mTvShootTip;
     @BindView(R.id.video_thumb_listview)
@@ -126,7 +126,6 @@ public class TrimVideoActivity extends BaseActivity {
     private int lastScrollX;
     private boolean isSeeking;
     private String mVideoPath;
-    public static final String EXTRA_SKIP_TYPE = "SKIP_TYPE";
     private int mOriginalWidth; //视频原始宽度
     private int mOriginalHeight; //视频原始高度
     private List<FilterModel> mVideoEffects = new ArrayList<>(); //视频滤镜效果

@@ -1,24 +1,28 @@
 ## 介绍
-- 本项目是一款Android视频编辑项目，功能有视频拍摄，视频裁剪，视频滤镜，视频压缩。
-- 本人只是将以下几大优秀开源框架集成到一起，以实现一个较完整的视频编辑器。
+ - 本项目是一款Android视频编辑项目，功能有视频拍摄，视频裁剪，视频滤镜，视频压缩。
+ - 本人只是将以下几大优秀开源框架集成到一起，以实现一个较完整的视频编辑器。
 
 ## 效果图
-![video-editor](image/01.jpg) ![video-editor](image/02.jpg)
+![video-editor](image/01.jpg)
 <br>
-![video-editor](image/03.jpg) ![video-editor](image/04.jpg)    
+![video-editor](image/02.jpg)
+<br>
+![video-editor](image/03.jpg)
+<br>
+![video-editor](image/04.jpg)    
+<br>
+
+<br>
 <br>
 
 ## Thanks
-  * [CJT2325](https://github.com/CJT2325/CameraView)
-  * [ta893115871](https://github.com/ta893115871/VideoEdit)
-  * [MasayukiSuda](https://github.com/MasayukiSuda/Mp4Composer-android)
-  * [Tourenathan-G5organisation](https://github.com/Tourenathan-G5organisation/SiliCompressor)
-  
-<br>
-<br>
+ * [CJT2325](https://github.com/CJT2325/CameraView)
+ * [ta893115871](https://github.com/ta893115871/VideoEdit)
+ * [MasayukiSuda](https://github.com/MasayukiSuda/Mp4Composer-android)
+ * [Tourenathan-G5organisation](https://github.com/Tourenathan-G5organisation/SiliCompressor)
 
 ## About
- - 亲, 喜欢就star一下吧~
+ - 亲, 喜欢就 star 一下吧~
  
 ## License
  

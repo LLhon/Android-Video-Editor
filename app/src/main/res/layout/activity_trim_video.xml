@@ -30,7 +30,7 @@
       android:gravity="center"
       android:orientation="vertical">
 
-      <com.marvhong.videoeffect.GPUVideoView
+      <com.marvhong.videoeffect.GlVideoView
         android:id="@+id/glsurfaceview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

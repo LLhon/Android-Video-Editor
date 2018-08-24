@@ -119,8 +119,6 @@ public class VideoGlRender implements Renderer, SurfaceTexture.OnFrameAvailableL
         }
         mChangeProgram = true;
         mChangeProgramSupportError = true;
-
-//        mFilter.setChangeProgram(true);
     }
 
     public void sendSurfaceForPlayer(final Surface surface) {
@@ -136,17 +134,7 @@ public class VideoGlRender implements Renderer, SurfaceTexture.OnFrameAvailableL
 
     @Override
     public void onSurfaceCreated(GL10 gl, EGLConfig config) {
-
         setupSurface();
-
-//        mFilter.setUpSurface();
-//
-//        mSurfaceTexture = new SurfaceTexture(mFilter.getTextureId());
-//        mSurfaceTexture.setOnFrameAvailableListener(this);
-//
-//        Surface surface = new Surface(mSurfaceTexture);
-//
-//        sendSurfaceForPlayer(surface);
     }
 
     @Override
@@ -211,8 +199,8 @@ public class VideoGlRender implements Renderer, SurfaceTexture.OnFrameAvailableL
     public void onDrawFrame(GL10 gl) {
         synchronized (this) {
             if (mUpdateSurface) {
-                mSurfaceTexture.updateTexImage();
-                mSurfaceTexture.getTransformMatrix(mSTMatrix);
+                mSurfaceTexture.updateTexImage(); //获取新数据
+                mSurfaceTexture.getTransformMatrix(mSTMatrix); //让新的纹理和纹理坐标系能够正确的对应
                 mUpdateSurface = false;
             }
         }
@@ -223,8 +211,6 @@ public class VideoGlRender implements Renderer, SurfaceTexture.OnFrameAvailableL
         initPointerAndDraw();
 
         GLES20.glFinish();
-
-//        mFilter.draw(mSurfaceTexture, mSTMatrix, mMVPMatrix);
     }
 
     @Override
