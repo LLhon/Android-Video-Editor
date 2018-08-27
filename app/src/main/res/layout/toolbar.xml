@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:id="@+id/toolbar"
+  android:layout_width="match_parent"
+  android:layout_height="?attr/actionBarSize"
+  android:background="?attr/colorPrimary"
+  android:contentInsetLeft="0dp"
+  android:contentInsetStart="0dp"
+  android:theme="@style/ToolbarTheme"
+  app:contentInsetStartWithNavigation="0dp"
+  app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
+  app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+  app:titleTextAppearance="@style/Toolbar.TitleText">
+
+  <TextView
+    android:id="@+id/toolbar_title"
+    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:textSize="21sp"/>
+
+  <TextView
+    android:id="@+id/toolbar_menu_title"
+    style="@style/TextAppearance.AppCompat.Widget.ActionBar.Title"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="right"
+    android:paddingRight="15dp"
+    android:textSize="16sp"/>
+
+</android.support.v7.widget.Toolbar>

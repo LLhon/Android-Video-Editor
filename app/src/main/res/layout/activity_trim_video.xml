@@ -7,14 +7,7 @@
   android:background="@android:color/black"
   android:orientation="vertical">
 
-  <android.support.v7.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-    app:titleTextColor="@android:color/black"
-    app:theme="@style/ToolbarTheme"/>
+  <include layout="@layout/toolbar"/>
 
   <RelativeLayout
     android:layout_width="match_parent"

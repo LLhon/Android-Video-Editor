@@ -14,7 +14,6 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.VideoView;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.bumptech.glide.Glide;
 import com.marvhong.videoeditor.App;
@@ -64,7 +63,6 @@ public class VideoPreviewActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        ButterKnife.bind(this);
         mVideoView.setVideoPath(mVideoPath);
         mVideoView.setOnPreparedListener(new OnPreparedListener() {
             @Override

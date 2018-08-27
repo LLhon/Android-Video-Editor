@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.cjt2325.cameralibrary.JCameraView;
 import com.cjt2325.cameralibrary.listener.ClickListener;
 import com.cjt2325.cameralibrary.listener.ErrorListener;
@@ -47,7 +46,6 @@ public class VideoCameraActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        ButterKnife.bind(this);
         //设置视频保存路径
         mJCameraView.setSaveVideoPath(
             Environment.getExternalStorageDirectory().getPath() + File.separator

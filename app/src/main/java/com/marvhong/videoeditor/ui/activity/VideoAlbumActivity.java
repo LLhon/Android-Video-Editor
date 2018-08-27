@@ -4,12 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.marvhong.videoeditor.R;
 import com.marvhong.videoeditor.adapter.VideoGridAdapter;
 import com.marvhong.videoeditor.base.BaseActivity;
+import com.marvhong.videoeditor.helper.ToolbarHelper;
 import com.marvhong.videoeditor.model.LocalVideoModel;
 import com.marvhong.videoeditor.utils.VideoUtil;
 import com.marvhong.videoeditor.view.DividerGridItemDecoration;
@@ -29,8 +28,6 @@ public class VideoAlbumActivity extends BaseActivity implements VideoGridAdapter
 
     @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
 
     private List<LocalVideoModel> mLocalVideoModels = new ArrayList<>();
     private VideoGridAdapter mAdapter;
@@ -46,9 +43,12 @@ public class VideoAlbumActivity extends BaseActivity implements VideoGridAdapter
     }
 
     @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("相册");
+    }
+
+    @Override
     protected void initView() {
-        ButterKnife.bind(this);
-        setupToolbar(mToolbar, "相册");
         mRecyclerView.setLayoutManager(new GridLayoutManager(this, 4));
         mRecyclerView.setHasFixedSize(true);
         mRecyclerView.addItemDecoration(new DividerGridItemDecoration(this));

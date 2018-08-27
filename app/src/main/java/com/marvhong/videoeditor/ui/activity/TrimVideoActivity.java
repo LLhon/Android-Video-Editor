@@ -12,13 +12,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.support.v7.widget.Toolbar.OnMenuItemClickListener;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.View;
@@ -34,7 +31,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.bumptech.glide.Glide;
 import com.cjt2325.cameralibrary.util.FileUtil;
@@ -43,6 +39,7 @@ import com.marvhong.videoeditor.App;
 import com.marvhong.videoeditor.R;
 import com.marvhong.videoeditor.adapter.TrimVideoAdapter;
 import com.marvhong.videoeditor.base.BaseActivity;
+import com.marvhong.videoeditor.helper.ToolbarHelper;
 import com.marvhong.videoeditor.model.FilterModel;
 import com.marvhong.videoeditor.model.VideoEditInfo;
 import com.marvhong.videoeditor.utils.ExtractFrameWorkThread;
@@ -81,8 +78,6 @@ import java.util.List;
  */
 public class TrimVideoActivity extends BaseActivity {
 
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
     @BindView(R.id.glsurfaceview)
     GlVideoView mSurfaceView;
     @BindView(R.id.video_shoot_tip)
@@ -188,25 +183,15 @@ public class TrimVideoActivity extends BaseActivity {
     }
 
     @Override
-    protected void initView() {
-        ButterKnife.bind(this);
-        mToolbar.setTitle("裁剪");
-        mToolbar.setNavigationOnClickListener(v -> {
-            finish();
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("裁剪");
+        toolbarHelper.setMenuTitle("发布", v -> {
+            trimmerVideo();
         });
-        mToolbar.inflateMenu(R.menu.tool_bar);
-        mToolbar.setOnMenuItemClickListener(new OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.publish: //发布
-                        trimmerVideo();
-                        break;
-                }
-                return false;
-            }
-        });
+    }
 
+    @Override
+    protected void initView() {
         mRecyclerView
             .setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         videoEditAdapter = new TrimVideoAdapter(this, mMaxWidth / 10);

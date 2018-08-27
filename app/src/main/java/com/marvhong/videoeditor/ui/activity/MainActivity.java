@@ -2,19 +2,14 @@ package com.marvhong.videoeditor.ui.activity;
 
 import android.Manifest.permission;
 import android.content.Intent;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Toast;
-import butterknife.BindView;
-import butterknife.ButterKnife;
 import com.marvhong.videoeditor.R;
 import com.marvhong.videoeditor.base.BaseActivity;
+import com.marvhong.videoeditor.helper.ToolbarHelper;
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 public class MainActivity extends BaseActivity {
-
-    @BindView(R.id.toolbar)
-    Toolbar mToolbar;
 
     private RxPermissions mRxPermissions;
 
@@ -24,11 +19,14 @@ public class MainActivity extends BaseActivity {
     }
 
     @Override
+    protected void initToolbar(ToolbarHelper toolbarHelper) {
+        toolbarHelper.setTitle("视频编辑");
+        toolbarHelper.hideBackArrow();
+    }
+
+    @Override
     protected void initView() {
         mRxPermissions = new RxPermissions(this);
-        ButterKnife.bind(this);
-        setupToolbar(mToolbar, "视频编辑");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
     }
 
     /**

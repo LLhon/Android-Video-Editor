@@ -6,15 +6,7 @@
   android:layout_height="match_parent"
   android:orientation="vertical">
 
-  <android.support.v7.widget.Toolbar
-    android:id="@+id/toolbar"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    app:popupTheme="@style/AppTheme.AppBarOverlay"
-    app:contentInsetStartWithNavigation="0dp"
-    app:navigationIcon="@drawable/ic_arrow_back_black_24dp"
-    app:titleTextColor="@android:color/black"/>
+  <include layout="@layout/toolbar"/>
 
   <android.support.v7.widget.RecyclerView
     android:id="@+id/recyclerView"
