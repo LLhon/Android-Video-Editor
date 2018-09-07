@@ -3,19 +3,19 @@
  - 本人只是将以下几大优秀开源框架集成到一起，以实现一个较完整的视频编辑器。
 
 ## 效果图
-![video-editor](image/01.jpg)
+![video-editor](image/01.png)
 <br>
-![video-editor](image/02.jpg)
+![video-editor](image/02.png)
 <br>
-![video-editor](image/03.jpg)
+![video-editor](image/03.png)
 <br>
-![video-editor](image/04.jpg)    
-<br>
-
-<br>
+![video-editor](image/04.png)    
 <br>
 
-## Thanks
+<br>
+<br>
+
+## 感谢
  * [CJT2325](https://github.com/CJT2325/CameraView)
  * [ta893115871](https://github.com/ta893115871/VideoEdit)
  * [MasayukiSuda](https://github.com/MasayukiSuda/Mp4Composer-android)
