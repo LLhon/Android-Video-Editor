@@ -50,7 +50,8 @@ public class VideoCameraActivity extends BaseActivity {
         mJCameraView.setSaveVideoPath(
             Environment.getExternalStorageDirectory().getPath() + File.separator
                 + "videoeditor" + File.separator + "small_video");
-        mJCameraView.setMinDuration(3000);
+        mJCameraView.setMinDuration(3000); //设置最短录制时长
+        mJCameraView.setDuration(10000); //设置最长录制时长
         mJCameraView.setFeatures(JCameraView.BUTTON_STATE_ONLY_RECORDER);
         mJCameraView.setTip("长按拍摄, 3~10秒");
         mJCameraView.setRecordShortTip("录制时间3~10秒");
@@ -110,7 +111,7 @@ public class VideoCameraActivity extends BaseActivity {
 
             @Override
             public void recordEnd(long time) {
-
+                Log.e("录制状态回调", "录制时长：" + time);
             }
 
             @Override

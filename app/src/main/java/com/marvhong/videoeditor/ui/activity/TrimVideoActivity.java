@@ -66,6 +66,7 @@ import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 import java.io.File;
 import java.lang.ref.WeakReference;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -167,6 +168,10 @@ public class TrimVideoActivity extends BaseActivity {
                 @Override
                 public void onNext(String s) {
                     duration = Long.valueOf(mExtractVideoInfoUtil.getVideoLength());
+                    //矫正获取到的视频时长不是整数问题
+                    float tempDuration = duration / 1000f;
+                    duration = new BigDecimal(tempDuration).setScale(0, BigDecimal.ROUND_HALF_UP).intValue() * 1000;
+                    Log.e(TAG, "视频总时长：" + duration);
                     initEditVideo();
                 }
 
@@ -198,12 +203,9 @@ public class TrimVideoActivity extends BaseActivity {
         mRecyclerView.setAdapter(videoEditAdapter);
         mRecyclerView.addOnScrollListener(mOnScrollListener);
 
-        mSurfaceView.init(new IVideoSurface() {
-            @Override
-            public void onCreated(SurfaceTexture surfaceTexture) {
-                mSurfaceTexture = surfaceTexture;
-                initMediaPlayer(surfaceTexture);
-            }
+        mSurfaceView.init(surfaceTexture -> {
+            mSurfaceTexture = surfaceTexture;
+            initMediaPlayer(surfaceTexture);
         });
 
         //滤镜效果集合
@@ -364,7 +366,7 @@ public class TrimVideoActivity extends BaseActivity {
         } else {
             rightProgress = endPosition;
         }
-        mTvShootTip.setText(rightProgress / 1000 + "");
+        mTvShootTip.setText(String.format("裁剪 %d s", rightProgress / 1000));
         averagePxMs = (mMaxWidth * 1.0f / (rightProgress - leftProgress));
         Log.d(TAG, "------averagePxMs----:>>>>>" + averagePxMs);
     }
@@ -734,7 +736,7 @@ public class TrimVideoActivity extends BaseActivity {
                     mMediaPlayer.seekTo((int) leftProgress);
 //                    videoStart();
                     mTvShootTip
-                        .setText((rightProgress - leftProgress) / 1000 + "");
+                        .setText(String.format("裁剪 %d s", (rightProgress - leftProgress) / 1000));
                     break;
                 default:
                     break;

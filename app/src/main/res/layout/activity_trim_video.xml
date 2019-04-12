@@ -51,14 +51,16 @@
 
           <TextView
             android:id="@+id/video_shoot_tip"
-            android:layout_width="40dp"
+            android:layout_width="wrap_content"
             android:layout_height="22dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="9dp"
             android:layout_marginLeft="56dp"
+              android:paddingLeft="5dp"
+              android:paddingRight="5dp"
             android:gravity="center"
             android:background="@color/f4d4d4d"
-            android:text="10"
+            android:text="裁剪 10 s"
             android:textColor="@android:color/white"
             android:textSize="12sp"/>
 

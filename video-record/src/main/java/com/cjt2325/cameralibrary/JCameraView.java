@@ -451,6 +451,17 @@ public class JCameraView extends FrameLayout implements CameraInterface.CameraOp
     }
 
     /**
+     * 设置最长录制时长
+     * @param duration
+     */
+    public void setDuration(int duration) {
+        duration = duration;
+        if (mCaptureLayout != null) {
+            mCaptureLayout.setDuration(duration);
+        }
+    }
+
+    /**
      * 设置最短录制时长
      * @param minDuration
      */
